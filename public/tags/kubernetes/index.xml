@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Kubernetes on Jordi notes</title>
-    <link>http://j.tmpo.io/tags/kubernetes/</link>
+    <link>https://j.tmpo.io/tags/kubernetes/</link>
     <description>Recent content in Kubernetes on Jordi notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sun, 07 Feb 2016 07:55:50 +0100</lastBuildDate>
-    <atom:link href="http://j.tmpo.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://j.tmpo.io/tags/kubernetes/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Running a single node kubelet on gcloud</title>
-      <link>http://j.tmpo.io/post/kubelet_single_node/</link>
+      <link>https://j.tmpo.io/post/kubelet_single_node/</link>
       <pubDate>Sun, 07 Feb 2016 07:55:50 +0100</pubDate>
       
-      <guid>http://j.tmpo.io/post/kubelet_single_node/</guid>
+      <guid>https://j.tmpo.io/post/kubelet_single_node/</guid>
       <description>
 
 &lt;h2 id=&#34;rationale:89b45daf0c6780052adc3b010194b78b&#34;&gt;RATIONALE&lt;/h2&gt;

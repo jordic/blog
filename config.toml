@@ -1,4 +1,4 @@
-baseurl = "http://j.tmpo.io/"
+baseurl = "https://j.tmpo.io/"
 languageCode = "en-us"
 title = "Jordi notes"
 theme = "hugo-cactus-theme"

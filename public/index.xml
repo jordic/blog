@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Jordi notes</title>
-    <link>http://j.tmpo.io/</link>
+    <link>https://j.tmpo.io/</link>
     <description>Recent content on Jordi notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Mon, 08 Feb 2016 05:51:13 +0100</lastBuildDate>
-    <atom:link href="http://j.tmpo.io/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://j.tmpo.io/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Caddy with phabricator</title>
-      <link>http://j.tmpo.io/post/phabricator_caddy/</link>
+      <link>https://j.tmpo.io/post/phabricator_caddy/</link>
       <pubDate>Mon, 08 Feb 2016 05:51:13 +0100</pubDate>
       
-      <guid>http://j.tmpo.io/post/phabricator_caddy/</guid>
+      <guid>https://j.tmpo.io/post/phabricator_caddy/</guid>
       <description>&lt;p&gt;Needs caddy 0.8.1&lt;/p&gt;
 
 &lt;pre&gt;&lt;code&gt;https://domain {
@@ -34,10 +34,10 @@
     
     <item>
       <title>Running a single node kubelet on gcloud</title>
-      <link>http://j.tmpo.io/post/kubelet_single_node/</link>
+      <link>https://j.tmpo.io/post/kubelet_single_node/</link>
       <pubDate>Sun, 07 Feb 2016 07:55:50 +0100</pubDate>
       
-      <guid>http://j.tmpo.io/post/kubelet_single_node/</guid>
+      <guid>https://j.tmpo.io/post/kubelet_single_node/</guid>
       <description>
 
 &lt;h2 id=&#34;rationale:89b45daf0c6780052adc3b010194b78b&#34;&gt;RATIONALE&lt;/h2&gt;
@@ -88,10 +88,10 @@ sudo docker ps
     
     <item>
       <title>Proting our nginx sites to Caddy</title>
-      <link>http://j.tmpo.io/post/ubuntu_upstart/</link>
+      <link>https://j.tmpo.io/post/ubuntu_upstart/</link>
       <pubDate>Sat, 06 Feb 2016 08:52:21 +0100</pubDate>
       
-      <guid>http://j.tmpo.io/post/ubuntu_upstart/</guid>
+      <guid>https://j.tmpo.io/post/ubuntu_upstart/</guid>
       <description>
 
 &lt;h2 id=&#34;from-nginx-to-caddy:190bae218334fa136fc0e260c054d344&#34;&gt;From nginx to caddy&lt;/h2&gt;
@@ -161,10 +161,10 @@ redirect_stderr=true
     
     <item>
       <title>Angular Karma run tests images 404</title>
-      <link>http://j.tmpo.io/post/angular_karma_404/</link>
+      <link>https://j.tmpo.io/post/angular_karma_404/</link>
       <pubDate>Sat, 06 Feb 2016 08:02:50 +0100</pubDate>
       
-      <guid>http://j.tmpo.io/post/angular_karma_404/</guid>
+      <guid>https://j.tmpo.io/post/angular_karma_404/</guid>
       <description>&lt;p&gt;When running Karma tests I&amp;rsquo;ve got some 404, errors: After digging on
 stackoverflow, the solution is based on multiple misconfigured things:&lt;/p&gt;
 

@@ -2,28 +2,28 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>http://j.tmpo.io/</loc>
+    <loc>https://j.tmpo.io/</loc>
     <lastmod>2016-02-08T05:51:13+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://j.tmpo.io/post/phabricator_caddy/</loc>
+    <loc>https://j.tmpo.io/post/phabricator_caddy/</loc>
     <lastmod>2016-02-08T05:51:13+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://j.tmpo.io/post/kubelet_single_node/</loc>
+    <loc>https://j.tmpo.io/post/kubelet_single_node/</loc>
     <lastmod>2016-02-07T07:55:50+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://j.tmpo.io/post/ubuntu_upstart/</loc>
+    <loc>https://j.tmpo.io/post/ubuntu_upstart/</loc>
     <lastmod>2016-02-06T08:52:21+01:00</lastmod>
   </url>
   
   <url>
-    <loc>http://j.tmpo.io/post/angular_karma_404/</loc>
+    <loc>https://j.tmpo.io/post/angular_karma_404/</loc>
     <lastmod>2016-02-06T08:02:50+01:00</lastmod>
   </url>
   

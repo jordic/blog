@@ -2,19 +2,19 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Angularjs on Jordi notes</title>
-    <link>http://j.tmpo.io/tags/angularjs/</link>
+    <link>https://j.tmpo.io/tags/angularjs/</link>
     <description>Recent content in Angularjs on Jordi notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 06 Feb 2016 08:02:50 +0100</lastBuildDate>
-    <atom:link href="http://j.tmpo.io/tags/angularjs/index.xml" rel="self" type="application/rss+xml" />
+    <atom:link href="https://j.tmpo.io/tags/angularjs/index.xml" rel="self" type="application/rss+xml" />
     
     <item>
       <title>Angular Karma run tests images 404</title>
-      <link>http://j.tmpo.io/post/angular_karma_404/</link>
+      <link>https://j.tmpo.io/post/angular_karma_404/</link>
       <pubDate>Sat, 06 Feb 2016 08:02:50 +0100</pubDate>
       
-      <guid>http://j.tmpo.io/post/angular_karma_404/</guid>
+      <guid>https://j.tmpo.io/post/angular_karma_404/</guid>
       <description>&lt;p&gt;When running Karma tests I&amp;rsquo;ve got some 404, errors: After digging on
 stackoverflow, the solution is based on multiple misconfigured things:&lt;/p&gt;
 
