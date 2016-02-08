@@ -1,0 +1,17 @@
+baseurl = "http://j.tmpo.io/"
+languageCode = "en-us"
+title = "Jordi notes"
+theme = "hugo-cactus-theme"
+
+
+[params]
+    name = "Jordi Collell"
+    description = "Relevant things for myself"
+    bio = "programmer, gopher, javascripter, pythonist... "
+    twitter = "galigan"
+    enableRSS = true
+
+
+[social]
+    twitter = "https://twitter.com/galigan"
+    github  = "https://github.com/jordic"

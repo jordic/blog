@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Jordi notes</title>
+    <link>http://j.tmpo.io/</link>
+    <description>Recent content on Jordi notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Mon, 08 Feb 2016 05:51:13 +0100</lastBuildDate>
+    <atom:link href="http://j.tmpo.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Caddy with phabricator</title>
+      <link>http://j.tmpo.io/post/phabricator_caddy/</link>
+      <pubDate>Mon, 08 Feb 2016 05:51:13 +0100</pubDate>
+      
+      <guid>http://j.tmpo.io/post/phabricator_caddy/</guid>
+      <description>&lt;p&gt;Needs caddy 0.8.1&lt;/p&gt;
+
+&lt;pre&gt;&lt;code&gt;https://domain {
+  root /home/user/phabricator/webroot
+    rewrite / /index.php?__path__=/
+    rewrite  {
+        to {path} {path}/ /index.php?__path__={path_escaped}&amp;amp;{query}
+    }
+
+  fastcgi / /var/run/php5-fpm.sock php
+  errors /var/log/error.log
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Running a single node kubelet on gcloud</title>
+      <link>http://j.tmpo.io/post/kubelet_single_node/</link>
+      <pubDate>Sun, 07 Feb 2016 07:55:50 +0100</pubDate>
+      
+      <guid>http://j.tmpo.io/post/kubelet_single_node/</guid>
+      <description>
+
+&lt;h2 id=&#34;rationale:89b45daf0c6780052adc3b010194b78b&#34;&gt;RATIONALE&lt;/h2&gt;
+
+&lt;p&gt;Start a single node kubelet, with a pod definition, as described here:&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/compute/docs/containers/container_vms&#34;&gt;https://cloud.google.com/compute/docs/containers/container_vms&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;It can be useful for projects that need to lanuch single projects
+as entites..&lt;/p&gt;
+
+&lt;h3 id=&#34;create-instance:89b45daf0c6780052adc3b010194b78b&#34;&gt;Create Instance&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute instances create containervm-test \ 
+    --image container-vm --metadata-from-file \
+    google-container-manifest=demo.yaml \
+    --zone europe-west1-d --machine-type f1-micro \
+    --scopes compute-rw,storage-rw,monitoring
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;test-if-installation-is-working:89b45daf0c6780052adc3b010194b78b&#34;&gt;Test if installation is working&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute ssh containervm-test
+sudo docker ps
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;open-firewall:89b45daf0c6780052adc3b010194b78b&#34;&gt;Open firewall&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute firewall-rules create sample-http --allow tcp:80
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;cleanup-all:89b45daf0c6780052adc3b010194b78b&#34;&gt;Cleanup all&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;gcloud compute instances delete containervm-test
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;what-can-contain-a-demo-yaml:89b45daf0c6780052adc3b010194b78b&#34;&gt;What can contain a demo.yaml&lt;/h3&gt;
+
+&lt;p&gt;A Pod definition, as in kubernetes.&lt;/p&gt;
+
+&lt;h3 id=&#34;what-are-the-costs-of-a-f1-micro-with-a-ssd-10g-hd:89b45daf0c6780052adc3b010194b78b&#34;&gt;What are the costs of a f1-micro with a SSD 10G HD&lt;/h3&gt;
+
+&lt;p&gt;6.3$/month&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://cloud.google.com/products/calculator/#id=ed0c925f-b897-484d-9a6e-c02a010649ff&#34;&gt;https://cloud.google.com/products/calculator/#id=ed0c925f-b897-484d-9a6e-c02a010649ff&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Proting our nginx sites to Caddy</title>
+      <link>http://j.tmpo.io/post/ubuntu_upstart/</link>
+      <pubDate>Sat, 06 Feb 2016 08:52:21 +0100</pubDate>
+      
+      <guid>http://j.tmpo.io/post/ubuntu_upstart/</guid>
+      <description>
+
+&lt;h2 id=&#34;from-nginx-to-caddy:190bae218334fa136fc0e260c054d344&#34;&gt;From nginx to caddy&lt;/h2&gt;
+
+&lt;p&gt;&lt;a href=&#34;ttps://caddyserver.com&#34;&gt;Caddy server&lt;/a&gt;&lt;/p&gt;
+
+&lt;ol&gt;
+&lt;li&gt;Caddy will serve automatic TLS from letsencrypt&lt;/li&gt;
+&lt;li&gt;Caddy will serve http/2&lt;/li&gt;
+&lt;li&gt;Caddy is developed in go: this means that is easy to understand it&amp;rsquo;s codebase and also to contribute or add new features.&lt;/li&gt;
+&lt;li&gt;Caddy is as much performance as nginx.&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;These are some links and infos I&amp;rsquo;m collecting to start working with caddy in my infraestructure.&lt;/p&gt;
+
+&lt;h3 id=&#34;caddyfile:190bae218334fa136fc0e260c054d344&#34;&gt;Caddyfile&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;http://domain.com, https://domain.com {
+    proxy / localhost:8000 {
+        proxy_header Host {host}
+        except /media /static
+    }
+
+   root /var/wwwr/xxx
+}
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&#34;upstart-file-for-caddy:190bae218334fa136fc0e260c054d344&#34;&gt;Upstart file for caddy.&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;description &amp;quot;Caddy Server startup script&amp;quot;
+author &amp;quot;Mathias Beke&amp;quot;
+
+start on runlevel [2345]
+stop on runlevel [016]
+
+
+setuid some-caddy-user
+setgid some-caddy-group
+
+respawn
+respawn limit 10 5
+
+limit nofile 4096 4096
+
+script
+    cd /home/mathias/
+    exec ./caddy
+end script
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://denbeke.be/blog/servers/running-caddy-server-as-a-service/&#34;&gt;https://denbeke.be/blog/servers/running-caddy-server-as-a-service/&lt;/a&gt;&lt;/p&gt;
+
+&lt;h3 id=&#34;supervisor-example-for-gunicorn:190bae218334fa136fc0e260c054d344&#34;&gt;Supervisor example, for gunicorn&lt;/h3&gt;
+
+&lt;pre&gt;&lt;code&gt;[program:gunicorn]
+command=/path/to/gunicorn main:application -c /path/to/gunicorn.conf.py
+directory=/path/to/project
+user=nobody
+autostart=true
+autorestart=true
+redirect_stderr=true
+
+&lt;/code&gt;&lt;/pre&gt;
+</description>
+    </item>
+    
+    <item>
+      <title>Angular Karma run tests images 404</title>
+      <link>http://j.tmpo.io/post/angular_karma_404/</link>
+      <pubDate>Sat, 06 Feb 2016 08:02:50 +0100</pubDate>
+      
+      <guid>http://j.tmpo.io/post/angular_karma_404/</guid>
+      <description>&lt;p&gt;When running Karma tests I&amp;rsquo;ve got some 404, errors: After digging on
+stackoverflow, the solution is based on multiple misconfigured things:&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;Add to file list, on karma config, a pattern for images, something like:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;{
+    patterh: path.join(conf.paths.src, &#39;/assets/*/*.png&#39;),
+    watched: false,
+    included: false,
+    served: true    
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;With this, you tell the karma server, to serve found images.&lt;/p&gt;
+
+&lt;ul&gt;
+&lt;li&gt;I still have some 404 errors, and seems that are paths not found.
+After much digging, I found the solution, proxying them with a
+&lt;strong&gt;base&lt;/strong&gt; strange attribute:&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;pre&gt;&lt;code&gt;proxies :{
+    &#39;/assets/images/&#39;: &#39;/base/src/assets/images/&#39;
+}
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;p&gt;After this, errors have gone.&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>

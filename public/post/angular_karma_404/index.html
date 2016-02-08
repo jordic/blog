@@ -1,0 +1,136 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Jordi Collell">
+		<meta name="description" content="Relevant things for myself">
+		<meta name="generator" content="Hugo 0.15" />
+		<title>Angular Karma run tests images 404 &middot; Jordi notes</title>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon" href="http://j.tmpo.io/images/favicon.ico">
+		<link rel="stylesheet" href="http://j.tmpo.io/css/main.css">
+		<link rel="stylesheet" href="http://j.tmpo.io/css/highlight.css">
+		<link rel="stylesheet" href="http://j.tmpo.io/css/monosocialiconsfont.css">
+		
+		<link href="http://j.tmpo.io/index.xml" rel="alternate" type="application/rss+xml" title="Jordi notes" />
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='http://j.tmpo.io/'> <span class="arrow">←</span>Home</a>
+	
+
+</nav>
+
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h2 class="headline">6/02/2016</h2>
+                    <h1>Angular Karma run tests images 404</h1>
+                </header>
+                <section id="post-body">
+                    <p>When running Karma tests I&rsquo;ve got some 404, errors: After digging on
+stackoverflow, the solution is based on multiple misconfigured things:</p>
+
+<ul>
+<li>Add to file list, on karma config, a pattern for images, something like:</li>
+</ul>
+
+<pre><code>{
+    patterh: path.join(conf.paths.src, '/assets/*/*.png'),
+    watched: false,
+    included: false,
+    served: true    
+}
+</code></pre>
+
+<p>With this, you tell the karma server, to serve found images.</p>
+
+<ul>
+<li>I still have some 404 errors, and seems that are paths not found.
+After much digging, I found the solution, proxying them with a
+<strong>base</strong> strange attribute:</li>
+</ul>
+
+<pre><code>proxies :{
+    '/assets/images/': '/base/src/assets/images/'
+}
+</code></pre>
+
+<p>After this, errors have gone.</p>
+
+                </section>
+            </article>
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+    
+    
+        
+        <li>
+            <a href="http://j.tmpo.io/post/phabricator_caddy/">Caddy with phabricator<aside class="dates">Feb 8</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://j.tmpo.io/post/kubelet_single_node/">Running a single node kubelet on gcloud<aside class="dates">Feb 7</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://j.tmpo.io/post/ubuntu_upstart/">Proting our nginx sites to Caddy<aside class="dates">Feb 6</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="http://j.tmpo.io/post/angular_karma_404/">Angular Karma run tests images 404<aside class="dates">Feb 6</aside></a>
+        </li>
+        
+   
+</ul>
+            <footer id="footer">
+    
+        
+<div id="social">
+    
+    <a class="symbol" href="https://github.com/jordic">
+        github
+    </a>
+    
+    <a class="symbol" href="https://twitter.com/galigan">
+        twitterbird
+    </a>
+    
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2016 Jordi Collell j@tmpo.io
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="http://j.tmpo.io/js/main.js"></script>
+<script src="http://j.tmpo.io/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    </body>
+</html>
