@@ -7,7 +7,7 @@
 		<meta name="author" content="Jordi Collell">
 		<meta name="description" content="Relevant things for myself">
 		<meta name="generator" content="Hugo 0.15" />
-		<title>Caddy with phabricator &middot; Jordi notes</title>
+		<title>lti. New go project &middot; Jordi notes</title>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="https://j.tmpo.io/images/favicon.ico">
 		<link rel="stylesheet" href="https://j.tmpo.io/css/main.css">
@@ -31,24 +31,21 @@
         <section id="wrapper">
             <article class="post">
                 <header>
-                    <h2 class="headline">8/02/2016</h2>
-                    <h1>Caddy with phabricator</h1>
+                    <h2 class="headline">10/02/2016</h2>
+                    <h1>lti. New go project</h1>
                 </header>
                 <section id="post-body">
-                    <p>Needs caddy 0.8.1</p>
+                    
 
-<pre><code>https://domain {
-  root /home/user/phabricator/webroot
-    rewrite / /index.php?__path__=/
-    rewrite  {
-        to {path} {path}/ /index.php?__path__={path_escaped}&amp;{query}
-    }
+<h2 id="new-go-project-lti:29cf78a65e76121ad59e2852298a4579">New Go project: lti</h2>
 
-  fastcgi / /var/run/php5-fpm.sock php
-  errors /var/log/error.log
-}
+<p>IMS is developing Learning Tools Interoperability (LTI) to allow remote tools
+and content to be integrated into a Learning Management System (LMS).</p>
 
-</code></pre>
+<p>Just working on game server that needs to connect to an LMS service, and
+started developing this go lib.</p>
+
+<p><a href="https://github.com/jordic/lbi">https://github.com/jordic/lbi</a></p>
 
                 </section>
             </article>

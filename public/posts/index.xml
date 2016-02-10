@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Jordi notes</title>
+    <link>https://j.tmpo.io/posts/</link>
+    <description>Recent content in Posts on Jordi notes</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <lastBuildDate>Wed, 10 Feb 2016 15:35:20 +0100</lastBuildDate>
+    <atom:link href="https://j.tmpo.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>lti. New go project</title>
+      <link>https://j.tmpo.io/posts/lti/</link>
+      <pubDate>Wed, 10 Feb 2016 15:35:20 +0100</pubDate>
+      
+      <guid>https://j.tmpo.io/posts/lti/</guid>
+      <description>
+
+&lt;h2 id=&#34;new-go-project-lti:29cf78a65e76121ad59e2852298a4579&#34;&gt;New Go project: lti&lt;/h2&gt;
+
+&lt;p&gt;IMS is developing Learning Tools Interoperability (LTI) to allow remote tools
+and content to be integrated into a Learning Management System (LMS).&lt;/p&gt;
+
+&lt;p&gt;Just working on game server that needs to connect to an LMS service, and
+started developing this go lib.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;https://github.com/jordic/lbi&#34;&gt;https://github.com/jordic/lbi&lt;/a&gt;&lt;/p&gt;
+</description>
+    </item>
+    
+  </channel>
+</rss>
