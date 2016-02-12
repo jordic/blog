@@ -3,8 +3,13 @@
   
   <url>
     <loc>https://j.tmpo.io/</loc>
-    <lastmod>2016-02-10T15:35:20+01:00</lastmod>
+    <lastmod>2016-02-12T07:55:41+01:00</lastmod>
     <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>https://j.tmpo.io/posts/angular-seed/</loc>
+    <lastmod>2016-02-12T07:55:41+01:00</lastmod>
   </url>
   
   <url>

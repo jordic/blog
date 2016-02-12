@@ -7,7 +7,7 @@
 		<meta name="author" content="Jordi Collell">
 		<meta name="description" content="Relevant things for myself">
 		<meta name="generator" content="Hugo 0.15" />
-		<title>Running a single node kubelet on gcloud &middot; Jordi notes</title>
+		<title>Angular tmpo seed &middot; Jordi notes</title>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="https://j.tmpo.io/images/favicon.ico">
 		<link rel="stylesheet" href="https://j.tmpo.io/css/main.css">
@@ -31,55 +31,22 @@
         <section id="wrapper">
             <article class="post">
                 <header>
-                    <h2 class="headline">7/02/2016</h2>
-                    <h1>Running a single node kubelet on gcloud</h1>
+                    <h2 class="headline">12/02/2016</h2>
+                    <h1>Angular tmpo seed</h1>
                 </header>
                 <section id="post-body">
                     
 
-<h2 id="rationale:89b45daf0c6780052adc3b010194b78b">RATIONALE</h2>
+<h3 id="angular-tmpo-seed:19572cf71b93b6e2e646daeb1c925e30">Angular tmpo seed</h3>
 
-<p>Start a single node kubelet, with a pod definition, as described here:</p>
+<p>Developing angular applications is hard, if you don&rsquo;t have the correct pipeline
+well configured. We started using yeoman, and some generators, but on the end
+we prefer this clean approach (just a git repo that you can clone elsewhere)
+and start using it.</p>
 
-<p><a href="https://cloud.google.com/compute/docs/containers/container_vms">https://cloud.google.com/compute/docs/containers/container_vms</a></p>
+<p><a href="http://github.com/jordic/angular-tmpo-seed">http://github.com/jordic/angular-tmpo-seed</a></p>
 
-<p>It can be useful for projects that need to lanuch single projects
-as entites..</p>
-
-<h3 id="create-instance:89b45daf0c6780052adc3b010194b78b">Create Instance</h3>
-
-<pre><code>gcloud compute instances create containervm-test \ 
-    --image container-vm --metadata-from-file \
-    google-container-manifest=demo.yaml \
-    --zone europe-west1-d --machine-type f1-micro \
-    --scopes compute-rw,storage-rw,monitoring
-</code></pre>
-
-<h3 id="test-if-installation-is-working:89b45daf0c6780052adc3b010194b78b">Test if installation is working</h3>
-
-<pre><code>gcloud compute ssh containervm-test
-sudo docker ps
-</code></pre>
-
-<h3 id="open-firewall:89b45daf0c6780052adc3b010194b78b">Open firewall</h3>
-
-<pre><code>gcloud compute firewall-rules create sample-http --allow tcp:80
-</code></pre>
-
-<h3 id="cleanup-all:89b45daf0c6780052adc3b010194b78b">Cleanup all</h3>
-
-<pre><code>gcloud compute instances delete containervm-test
-</code></pre>
-
-<h3 id="what-can-contain-a-demo-yaml:89b45daf0c6780052adc3b010194b78b">What can contain a demo.yaml</h3>
-
-<p>A Pod definition, as in kubernetes.</p>
-
-<h3 id="what-are-the-costs-of-a-f1-micro-with-a-ssd-10g-hd:89b45daf0c6780052adc3b010194b78b">What are the costs of a f1-micro with a SSD 10G HD</h3>
-
-<p>6.3$/month</p>
-
-<p><a href="https://cloud.google.com/products/calculator/#id=ed0c925f-b897-484d-9a6e-c02a010649ff">https://cloud.google.com/products/calculator/#id=ed0c925f-b897-484d-9a6e-c02a010649ff</a></p>
+<p>Keep coding!</p>
 
                 </section>
             </article>

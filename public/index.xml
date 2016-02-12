@@ -6,8 +6,29 @@
     <description>Recent content on Jordi notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Wed, 10 Feb 2016 15:35:20 +0100</lastBuildDate>
+    <lastBuildDate>Fri, 12 Feb 2016 07:55:41 +0100</lastBuildDate>
     <atom:link href="https://j.tmpo.io/index.xml" rel="self" type="application/rss+xml" />
+    
+    <item>
+      <title>Angular tmpo seed</title>
+      <link>https://j.tmpo.io/posts/angular-seed/</link>
+      <pubDate>Fri, 12 Feb 2016 07:55:41 +0100</pubDate>
+      
+      <guid>https://j.tmpo.io/posts/angular-seed/</guid>
+      <description>
+
+&lt;h3 id=&#34;angular-tmpo-seed:19572cf71b93b6e2e646daeb1c925e30&#34;&gt;Angular tmpo seed&lt;/h3&gt;
+
+&lt;p&gt;Developing angular applications is hard, if you don&amp;rsquo;t have the correct pipeline
+well configured. We started using yeoman, and some generators, but on the end
+we prefer this clean approach (just a git repo that you can clone elsewhere)
+and start using it.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&#34;http://github.com/jordic/angular-tmpo-seed&#34;&gt;http://github.com/jordic/angular-tmpo-seed&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Keep coding!&lt;/p&gt;
+</description>
+    </item>
     
     <item>
       <title>lti. New go project</title>
