@@ -63,15 +63,17 @@ a:hover { text-decoration: underline }
     font-size: 30px;
     color: #000;
 }
-#wrapper h2 { margin-bottom:0px; font-size:16px  }
+#wrapper h2 { margin-bottom:0px; font-size:20px  }
 
 code { padding:15px;  }
 
 #post-body {
+    line-height: 26px;
     font-size: 16px;
 }
 #post-body h2 {
-   font-size:22px;
+    font-size:26px;
+    margin-top: 25px;
     margin-bottom: 0px;
     color: #000;
 

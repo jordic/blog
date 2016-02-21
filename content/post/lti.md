@@ -13,7 +13,7 @@ and content to be integrated into a Learning Management System (LMS).
 Just working on game server that needs to connect to an LMS service, and
 started developing this go lib.
 
-https://github.com/jordic/lbi
+https://github.com/jordic/lti
 
 
 

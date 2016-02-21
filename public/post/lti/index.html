@@ -7,7 +7,7 @@
 		<meta name="author" content="Jordi Collell">
 		<meta name="description" content="Relevant things for myself">
 		<meta name="generator" content="Hugo 0.15" />
-		<title>Angular Karma run tests images 404 &middot; Jordi notes</title>
+		<title>lti. New go project &middot; Jordi notes</title>
         <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
 		<link rel="shortcut icon" href="https://j.tmpo.io/images/favicon.ico">
 		<link rel="stylesheet" href="https://j.tmpo.io/css/main.css">
@@ -31,39 +31,21 @@
         <section id="wrapper">
             <article class="post">
                 <header>
-                    <h2 class="headline">6/02/2016</h2>
-                    <h1>Angular Karma run tests images 404</h1>
+                    <h2 class="headline">10/02/2016</h2>
+                    <h1>lti. New go project</h1>
                 </header>
                 <section id="post-body">
-                    <p>When running Karma tests I&rsquo;ve got some 404, errors: After digging on
-stackoverflow, the solution is based on multiple misconfigured things:</p>
+                    
 
-<ul>
-<li>Add to file list, on karma config, a pattern for images, something like:</li>
-</ul>
+<h2 id="new-go-project-lti:29cf78a65e76121ad59e2852298a4579">New Go project: lti</h2>
 
-<pre><code>{
-    patterh: path.join(conf.paths.src, '/assets/*/*.png'),
-    watched: false,
-    included: false,
-    served: true    
-}
-</code></pre>
+<p>IMS is developing Learning Tools Interoperability (LTI) to allow remote tools
+and content to be integrated into a Learning Management System (LMS).</p>
 
-<p>With this, you tell the karma server, to serve found images.</p>
+<p>Just working on game server that needs to connect to an LMS service, and
+started developing this go lib.</p>
 
-<ul>
-<li>I still have some 404 errors, and seems that are paths not found.
-After much digging, I found the solution, proxying them with a
-<strong>base</strong> strange attribute:</li>
-</ul>
-
-<pre><code>proxies :{
-    '/assets/images/': '/base/src/assets/images/'
-}
-</code></pre>
-
-<p>After this, errors have gone.</p>
+<p><a href="https://github.com/jordic/lti">https://github.com/jordic/lti</a></p>
 
                 </section>
             </article>

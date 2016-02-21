@@ -3,17 +3,22 @@
   
   <url>
     <loc>https://j.tmpo.io/</loc>
-    <lastmod>2016-02-12T07:55:41+01:00</lastmod>
+    <lastmod>2016-02-21T07:35:20+01:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>https://j.tmpo.io/posts/angular-seed/</loc>
+    <loc>https://j.tmpo.io/post/deploy_go_angular_apps/</loc>
+    <lastmod>2016-02-21T07:35:20+01:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>https://j.tmpo.io/post/angular-seed/</loc>
     <lastmod>2016-02-12T07:55:41+01:00</lastmod>
   </url>
   
   <url>
-    <loc>https://j.tmpo.io/posts/lti/</loc>
+    <loc>https://j.tmpo.io/post/lti/</loc>
     <lastmod>2016-02-10T15:35:20+01:00</lastmod>
   </url>
   

@@ -1,0 +1,248 @@
+    <!DOCTYPE html>
+<html lang="en-us">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<meta name="author" content="Jordi Collell">
+		<meta name="description" content="Relevant things for myself">
+		<meta name="generator" content="Hugo 0.15" />
+		<title>Deploying Go &#43; Angular Applications &middot; Jordi notes</title>
+        <link href='https://fonts.googleapis.com/css?family=Lato:400,400italic,700,700italic' rel='stylesheet' type='text/css'>
+		<link rel="shortcut icon" href="https://j.tmpo.io/images/favicon.ico">
+		<link rel="stylesheet" href="https://j.tmpo.io/css/main.css">
+		<link rel="stylesheet" href="https://j.tmpo.io/css/highlight.css">
+		<link rel="stylesheet" href="https://j.tmpo.io/css/monosocialiconsfont.css">
+		
+		<link href="https://j.tmpo.io/index.xml" rel="alternate" type="application/rss+xml" title="Jordi notes" />
+		
+	</head>
+
+    <body>
+       <nav class="main-nav">
+	
+	
+		<a href='https://j.tmpo.io/'> <span class="arrow">←</span>Home</a>
+	
+
+</nav>
+
+
+        <section id="wrapper">
+            <article class="post">
+                <header>
+                    <h2 class="headline">21/02/2016</h2>
+                    <h1>Deploying Go &#43; Angular Applications</h1>
+                </header>
+                <section id="post-body">
+                    
+
+<h2 id="single-binary-magic:00c182bc3cde48762082aef29063ce70">Single binary magic</h2>
+
+<p>A Go application, when it&rsquo;s compiled has no dependencies. Just a single binary file
+that can be executed on every machine you want. Obviously you need to take care of the
+architecture. And compile for the correct one.</p>
+
+<p>Our first approach would be to deploy it as is.. without any external tooling.</p>
+
+<h2 id="no-extra-tooling:00c182bc3cde48762082aef29063ce70">No extra tooling</h2>
+
+<p><strong>You have</strong>: a single binary file for the backend go application, and a folder, with some
+static files that will have to be served from your SPA.</p>
+
+<pre><code>/app/backend
+/app/dist/index.html
+/app/dist/scripts/app.js
+/app/dist/css/app.css
+</code></pre>
+
+<p>Someone will told you that you need a webserver for serving the static files from the SPA.
+But there is no need. Go, has a good webserver integrated on the Standard Lib, that is
+capable of serving your static files on the same way that Nginx will do. You just need to
+declare a flag, or a env config on your backend, pointing to the app path files. And then
+from the backend, serve the files, with something like:</p>
+
+<pre><code>http.Handle(&quot;/&quot;, http.FileServer(http.Dir(*staticDir)))
+
+</code></pre>
+
+<p>This approach is fine, when you deploy, you just need to copy the files to server, and launch
+the binary. Sure, you can make a small bash script, that does it indirectly, first, creates
+a new folder with the release, and later, ln it  just before relaunch the
+service with the new configuration (to make it atomic)</p>
+
+<h2 id="append-the-static-files-to-the-go-binary:00c182bc3cde48762082aef29063ce70">Append the static files to the go binary.</h2>
+
+<p>OK, past approach seems correct for a lot of use cases. But what happens if you want to offer
+your application as a single binary. (For devops tooling for example). You will need that people
+download a binary, copy it to some path on their systems, and later copy the static files,
+to some other path, and every time they launch the binary, they need to take care on where,
+the SAP client application is stored.</p>
+
+<p>Go has super good solutions to solve this approach and distribute a single binary file, with the
+client files appended to it. There are other solutions, but I use this:</p>
+
+<p><a href="https://github.com/elazarl/go-bindata-assetfs">https://github.com/elazarl/go-bindata-assetfs</a></p>
+
+<p>Every time you build a new release, you need to append static files to the binary, doing:</p>
+
+<pre><code>$ go-bin-data data/...
+</code></pre>
+
+<p>This command will generate a bindata.go file in your project dir, that will allow to serve the
+static files from the main binary, just doing this:</p>
+
+<pre><code>http.Handle(&quot;/&quot;, http.FileServer(assetsFs()))
+</code></pre>
+
+<p>On the options you can tune, there&rsquo;s a flag for when developing, that allow to serve directly files
+from disk, using the same function call. This way, you just develop as usual, and on the end,
+when you want to release the application, you just need to &ldquo;generate&rdquo; the bin data file.</p>
+
+<p>Usually I do this, putting it on a Makefile, and also, when possible compiling a static binary go,
+without cgo (no libc dependencies):</p>
+
+<pre><code>all: compile
+
+compile: assets-production
+	CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o main .
+
+assets-production:
+    go-bindata-assetsfs --prefix ../../ ../../dist/...
+
+assets-dev:
+    go-bindata-assetsfs --debug --prefix ../../ ../../dist/...
+
+</code></pre>
+
+<p>This approach is super clean, you end up with a single binary that has the
+backend server and also the javascript frontend SAP client. A big win, just
+launch it and you have a complete distributively and multiplataform application.</p>
+
+<h3 id="distribute-with-a-docker:00c182bc3cde48762082aef29063ce70">Distribute with a docker</h3>
+
+<p>Our third approach involves using <a href="http://docker.com">http://docker.com</a></p>
+
+<p>This is also a easy way of distributing a go app, but this time, you don&rsquo;t need to
+append the static files to the binary, is better to copy the static folder to
+the docker image. Coming from the binary file compiled before, we can start with
+a Dockerfile like this:</p>
+
+<pre><code>FROM SCRATCH
+COPY app/dist /dist
+ADD  backend backend
+
+CMD = [&quot;/backend &quot;-static&quot;, &quot;dist/&quot;]
+
+</code></pre>
+
+<p>If you can distribute your application with Docker, this is the more clean approach, you
+end app, with an image, that only contains your binary application, plus, your compiled,
+Angular SAP Client. On one layer for each one.</p>
+
+<p>If you change the backend, only the backend layer gets overwritten, also the same for
+the client.</p>
+
+<p>For this we also use makefiles for building the application, something like this:</p>
+
+<pre><code>VERSION = r1
+PREFIX = yourrepourl
+
+docker_build:
+	docker build -t $(PREFIX):$(VERSION) .
+	docker tag  $(PREFIX):$(VERSION) $(PREFIX):$(VERSION)
+
+push:
+	docker push $(PREFIX):$(VERSION)
+</code></pre>
+
+                </section>
+            </article>
+            
+
+            <ul id="post-list" class="archive readmore">
+    <h3>Read more</h3>
+    
+    
+        
+        <li>
+            <a href="https://j.tmpo.io/post/deploy_go_angular_apps/">Deploying Go &#43; Angular Applications<aside class="dates">Feb 21</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://j.tmpo.io/post/angular-seed/">Angular tmpo seed<aside class="dates">Feb 12</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://j.tmpo.io/post/lti/">lti. New go project<aside class="dates">Feb 10</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://j.tmpo.io/post/phabricator_caddy/">Caddy with phabricator<aside class="dates">Feb 8</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://j.tmpo.io/post/kubelet_single_node/">Running a single node kubelet on gcloud<aside class="dates">Feb 7</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://j.tmpo.io/post/ubuntu_upstart/">Proting our nginx sites to Caddy<aside class="dates">Feb 6</aside></a>
+        </li>
+        
+   
+    
+        
+        <li>
+            <a href="https://j.tmpo.io/post/angular_karma_404/">Angular Karma run tests images 404<aside class="dates">Feb 6</aside></a>
+        </li>
+        
+   
+</ul>
+            <footer id="footer">
+    
+        
+<div id="social">
+    
+    <a class="symbol" href="https://github.com/jordic">
+        github
+    </a>
+    
+    <a class="symbol" href="https://twitter.com/galigan">
+        twitterbird
+    </a>
+    
+</div>
+
+    
+    <p class="small">
+    
+        © Copyright 2016 Jordi Collell j@tmpo.io
+    
+    </p>
+</footer>
+
+        </section>
+
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+<script src="https://j.tmpo.io/js/main.js"></script>
+<script src="https://j.tmpo.io/js/highlight.js"></script>
+<script>hljs.initHighlightingOnLoad();</script>
+
+
+    </body>
+</html>
