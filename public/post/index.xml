@@ -17,11 +17,13 @@
       <guid>https://j.tmpo.io/post/deploy_go_angular_apps/</guid>
       <description>
 
-&lt;h2 id=&#34;single-binary-magic:00c182bc3cde48762082aef29063ce70&#34;&gt;Single binary magic&lt;/h2&gt;
+&lt;h2 id=&#34;tl-dr:00c182bc3cde48762082aef29063ce70&#34;&gt;TL;DR&lt;/h2&gt;
 
-&lt;p&gt;A Go application, when it&amp;rsquo;s compiled has no dependencies. Just a single binary file
+&lt;p&gt;Distribute a go backend service with an angular frontend. Three ways of deploying a go application.&lt;/p&gt;
+
+&lt;p&gt;A Go application when it&amp;rsquo;s compiled has no dependencies: just a single binary file
 that can be executed on every machine you want. Obviously you need to take care of the
-architecture. And compile for the correct one.&lt;/p&gt;
+architecture, and compile for the correct one.&lt;/p&gt;
 
 &lt;p&gt;Our first approach would be to deploy it as is.. without any external tooling.&lt;/p&gt;
 
@@ -99,7 +101,7 @@ assets-dev:
 backend server and also the javascript frontend SAP client. A big win, just
 launch it and you have a complete distributively and multiplataform application.&lt;/p&gt;
 
-&lt;h3 id=&#34;distribute-with-a-docker:00c182bc3cde48762082aef29063ce70&#34;&gt;Distribute with a docker&lt;/h3&gt;
+&lt;h2 id=&#34;distribute-with-a-docker:00c182bc3cde48762082aef29063ce70&#34;&gt;Distribute with a docker&lt;/h2&gt;
 
 &lt;p&gt;Our third approach involves using &lt;a href=&#34;http://docker.com&#34;&gt;http://docker.com&lt;/a&gt;&lt;/p&gt;
 

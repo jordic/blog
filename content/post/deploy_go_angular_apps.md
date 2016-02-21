@@ -5,11 +5,13 @@ title = "Deploying Go + Angular Applications"
 
 +++
 
-## Single binary magic
+## TL;DR
 
-A Go application, when it's compiled has no dependencies. Just a single binary file 
+Distribute a go backend service with an angular frontend. Three ways of deploying a go application.
+
+A Go application when it's compiled has no dependencies: just a single binary file 
 that can be executed on every machine you want. Obviously you need to take care of the
-architecture. And compile for the correct one.
+architecture, and compile for the correct one.
 
 Our first approach would be to deploy it as is.. without any external tooling. 
 
@@ -91,7 +93,7 @@ This approach is super clean, you end up with a single binary that has the
 backend server and also the javascript frontend SAP client. A big win, just
 launch it and you have a complete distributively and multiplataform application.
 
-### Distribute with a docker
+## Distribute with a docker
 
 Our third approach involves using http://docker.com
 

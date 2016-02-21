@@ -72,10 +72,11 @@ code { padding:15px;  }
     font-size: 16px;
 }
 #post-body h2 {
+    line-height:36px;
     font-size:26px;
     margin-top: 25px;
     margin-bottom: 0px;
-    color: #000;
+    color: #333;
 
 }
 
